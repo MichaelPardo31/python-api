@@ -17,6 +17,13 @@ app = Flask(__name__)
 def get_days():
     return jsonify(days)
 
+@app.route("/<int:day_id>", methods=["GET"])
+def get_day(day_id):
+    day = [day for day in days if day["id"] == day_id]
+    if len(day) == 0:
+        abort(404)
+    return jsonify({"day cambio nuevo tarea": day[0]})
+
 
 @app.route("/<int:day_id>", methods=["GET"])
 def get_day(day_id):
