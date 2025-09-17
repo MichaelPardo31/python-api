@@ -17,6 +17,7 @@ app = Flask(__name__)
 def get_days():
     return jsonify(days)
 
+#mio
 @app.route("/<int:day_id>", methods=["GET"])
 def get_day(day_id):
     day = [day for day in days if day["id"] == day_id]
@@ -37,6 +38,10 @@ def get_day(day_id):
 def post_days():
     return jsonify({"success": True}), 201
 
+#mio
+@app.route("/", methods=["POST"])
+def post_days():
+    return jsonify({"Error": False}), 201
 
 if __name__ == "__main__":
     app.run(debug=True)
